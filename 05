@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTML, JS and CSS files
+    deactivate server
+
+    Note right of browser: The browser loads the JavaScript and CSS files and renders the page
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa/notes
+    activate browser
+    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate browser
+
+    Note right of browser: The JavaScript code fetches the notes data from the json
